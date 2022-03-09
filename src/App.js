@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import Lists from "./Components/Lists";
+import TopCalender from "./Components/TopCalender";
+import "./App.css";
+import routes from "./router";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Home from "./Home";
+import AddTask from "./Components/AddTask";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Suspense fallback={null}>
+    <Router>
+      <Switch>
+        {routes.map((route, idx) => {
+          return route.component ? (
+            <Route
+              key={idx}
+              path={route.path}
+              exact={route.exact}
+              render={(props) => (
+                <>
+                <Header/>
+              <route.component {...props} />
+              <Footer />
+                </>
+              )}
+            />
+          ) : null;
+        })}
+        <Redirect from="/" to="/" />
+      </Switch>
+    </Router>
+  </React.Suspense>
   );
-}
+};
 
 export default App;

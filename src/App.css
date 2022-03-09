@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  font-size: 20px;
+  padding: 8px 10px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+.app__body {
+  background-color: #282828;
+  color: white;
+  
+}
+.profile__photo {
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.top_bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+/* .css-m9glnp-MuiPaper-root-MuiDialog-paper{
+  background-color: #282828 !important;
+  color: white !important;
+} */

@@ -1,0 +1,34 @@
+.add__header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid #f9dc4b;
+  border-radius: 10px;
+}
+.labels {
+  color: white;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: #f9dc4b;
+  color: black !important;
+}
+.addtask__header {
+  min-height: 100vh;
+  margin-top: 115px;
+  padding-bottom: 55px;
+}
+.add__task__btn {
+  width: 50%;
+  background-color: #f9dc4b;
+  color: black;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

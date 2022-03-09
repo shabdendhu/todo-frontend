@@ -1,0 +1,24 @@
+.datechip{
+    max-height: 80px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 25px;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px;
+}
+.today__datechip{
+    background-color: #f9dc4b;
+    color: #282828;
+}
+.datechip__container{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    overflow-x: auto;
+}
