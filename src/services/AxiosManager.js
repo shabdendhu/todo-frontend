@@ -4,7 +4,7 @@ import constants from './constants';
 const user = JSON.parse(localStorage.getItem('user'))
 const token = user ? user.token : ''
 export default axios.create({
-  baseURL: ``,
+  baseURL: `http://localhost:9000/api/`,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

@@ -1,18 +1,33 @@
-import { CloseCircleFilled } from "@ant-design/icons";
+import { ApiFilled, CloseCircleFilled } from "@ant-design/icons";
 import { Dialog, Slide } from "@mui/material";
-import { DatePicker, Form, Input, Select } from "antd";
+import { DatePicker, Form, Input, Select, TimePicker } from "antd";
 import React from "react";
+import { API } from "../services/api.service";
+import moment from "moment";
 import "./addtask.css";
+import { useHistory } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 const { Item, useForm } = Form;
 const { Option } = Select;
-const AddTask = ({ open, setOpen }) => {
+const AddTask = () => {
   const [form] = useForm();
+  const history=useHistory()
   const priorityArr = ["Heigh", "Normal", "Low"];
   const addTask = () => {
-    form.validateFields().then((value) => {
-      console.log(value);
+    form.validateFields().then(async (value) => {
+      const newTask = {
+        taskName: value.taskName,
+        description: value.description,
+        date: moment(value.date).format("YYYY-MM-DD"),
+        time: moment(value.time).format("HH-MM a"),
+        priority: value.priority.value.toLowerCase(),
+      };
+      const addRes = await API.addNewTask(newTask);
+      console.log(newTask, addRes);
+      if(addRes.status){
+        history.push('/')
+      }
     });
   };
   return (
@@ -32,26 +47,21 @@ const AddTask = ({ open, setOpen }) => {
         >
           <Input style={{ background: "#f9dc4b", color: "black" }} />
         </Item>
-        <span className="labels">Time Limit</span>
+        <span className="labels">Date</span>
         <Item
-          name="timeLimit"
-          rules={[{ required: true, message: "Invalid timeLimit" }]}
+          name="date"
+          rules={[{ required: true, message: "Invalid startDate" }]}
         >
           <DatePicker
             style={{ background: "#9eddff", color: "black", width: "100%" }}
-            showTime={{ format: "HH:mm" }}
-            format="YYYY-MM-DD HH:mm"
+            format="YYYY-MM-DD"
           />
         </Item>
-        <span className="labels">Time Limit</span>
-        <Item
-          name="timeLimit"
-          rules={[{ required: true, message: "Invalid timeLimit" }]}
-        >
-          <DatePicker
-            style={{ background: "#ffb2e9", color: "black", width: "100%" }}
-            showTime={{ format: "HH:mm" }}
-            format="YYYY-MM-DD HH:mm"
+        <span className="labels">Time</span>
+        <Item name="time" rules={[{ required: true, message: "Invalid time" }]}>
+          <TimePicker
+            style={{ background: "#9eddff", color: "black", width: "100%" }}
+            use12Hours
           />
         </Item>
         <span className="labels">Priority</span>

@@ -36,4 +36,5 @@
   height: fit-content;
   margin-top: 115px;
   padding-bottom: 55px;
+  min-height: 100vh;
 }
