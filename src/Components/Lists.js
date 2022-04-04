@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import { API } from "../services/api.service";
 import "./list.css";
 const TaskCard = ({ data }) => {
@@ -10,7 +11,7 @@ const TaskCard = ({ data }) => {
     low: "yellow",
   };
   return (
-    <div style={{ background: color }} className="task__card">
+    <div  style={{ background: color }} className="task__card">
       <div
         className="status__bar"
         style={{ background: priorityColor[data.priority] }}
